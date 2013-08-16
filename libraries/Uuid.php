@@ -67,9 +67,12 @@ class Uuid
 		);
   }
 
-	public function v4() 
+	public function v4($trim = false) 
 	{
-    return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+		
+		$format = ($trim == false) ? '%04x%04x-%04x-%04x-%04x-%04x%04x%04x' : '%04x%04x%04x%04x%04x%04x%04x%04x';
+    	
+		return sprintf($format,
 
 			// 32 bits for "time_low"
 			mt_rand(0, 0xffff), mt_rand(0, 0xffff),
